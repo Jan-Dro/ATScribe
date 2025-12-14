@@ -1,5 +1,5 @@
 import type { Profile, FieldMatch, FillResult } from '../shared/types';
-import { fillInput, fillSelect, formatPhone } from '../shared/utils';
+import { fillInput, fillSelect, formatPhone, formatWorkExperience } from '../shared/utils';
 
 export function fillFields(matches: FieldMatch[], profile: Profile): FillResult {
   const result: FillResult = {
@@ -43,6 +43,11 @@ export function fillFields(matches: FieldMatch[], profile: Profile): FillResult 
 }
 
 function getProfileValue(profileKey: string, profile: Profile): string {
+  // Handle work experience
+  if (profileKey === 'workExperience') {
+    return formatWorkExperience(profile.workExperience);
+  }
+
   const parts = profileKey.split('.');
 
   if (parts.length === 1) {

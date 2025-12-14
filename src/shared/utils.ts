@@ -156,3 +156,51 @@ export function formatPhone(phone: string): string {
   const digits = phone.replace(/\D/g, '');
   return digits;
 }
+
+export function formatWorkExperience(workExperience: Array<{
+  company: string;
+  title: string;
+  startDate?: string;
+  endDate?: string;
+  location?: string;
+  summary?: string;
+}>): string {
+  if (!workExperience || workExperience.length === 0) {
+    return '';
+  }
+
+  return workExperience
+    .map(job => {
+      const lines: string[] = [];
+      
+      // Title at Company
+      if (job.title && job.company) {
+        lines.push(`${job.title} at ${job.company}`);
+      } else if (job.title) {
+        lines.push(job.title);
+      } else if (job.company) {
+        lines.push(job.company);
+      }
+
+      // Date range
+      const startDate = job.startDate || '';
+      const endDate = job.endDate || 'Present';
+      if (startDate) {
+        lines.push(`${startDate} - ${endDate}`);
+      }
+
+      // Location
+      if (job.location) {
+        lines.push(job.location);
+      }
+
+      // Summary/Description
+      if (job.summary) {
+        lines.push('');
+        lines.push(job.summary);
+      }
+
+      return lines.join('\n');
+    })
+    .join('\n\n');
+}

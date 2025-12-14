@@ -16,6 +16,22 @@ const SYNONYMS: Record<string, string[]> = {
   linkedin: ['linkedin', 'linked in'],
   github: ['github', 'git hub'],
   portfolio: ['portfolio', 'website', 'personal site', 'site', 'web site'],
+  workExperience: [
+    'work experience',
+    'work history',
+    'employment history',
+    'professional experience',
+    'relevant experience',
+    'experience',
+    'professional background',
+    'career history',
+    'employment',
+    'previous employment',
+    'job history',
+    'work background',
+    'resume',
+    'cv',
+  ],
 };
 
 const AUTOCOMPLETE_MAP: Record<string, string> = {
